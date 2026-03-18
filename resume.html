@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shibin Balachandran — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Calibri', Arial, sans-serif;
+      font-size: 11pt;
+      color: #1a1a1a;
+      background: #f0f2f5;
+      line-height: 1.5;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 32px auto;
+      background: #fff;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: #0f2044;
+      padding: 36px 44px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #4f8ef7, #7c5cfc, #00d4aa);
+    }
+    .header-name {
+      font-size: 28pt;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+    .header-title {
+      font-size: 12pt;
+      color: #7ec8ff;
+      font-weight: 500;
+      margin-top: 6px;
+      letter-spacing: 0.3px;
+    }
+    .header-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 24px;
+      margin-top: 18px;
+    }
+    .header-contact span {
+      font-size: 9.5pt;
+      color: #c8d8f0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .header-contact span::before {
+      content: attr(data-icon);
+      font-size: 11pt;
+    }
+
+    /* ── BODY LAYOUT ── */
+    .body {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      min-height: calc(297mm - 130px);
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      background: #f7f9fc;
+      border-right: 1px solid #e8edf5;
+      padding: 28px 20px;
+    }
+    .sidebar-section { margin-bottom: 28px; }
+    .sidebar-section:last-child { margin-bottom: 0; }
+    .sidebar-heading {
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #4f8ef7;
+      border-bottom: 2px solid #4f8ef7;
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+    }
+    .skill-item {
+      margin-bottom: 10px;
+    }
+    .skill-name {
+      font-size: 9pt;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: 3px;
+    }
+    .skill-bar {
+      height: 4px;
+      background: #e0e7f3;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, #4f8ef7, #7c5cfc);
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .tag {
+      font-size: 8pt;
+      background: #e8f0fe;
+      color: #3060c8;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .sidebar-list {
+      list-style: none;
+    }
+    .sidebar-list li {
+      font-size: 9pt;
+      color: #3a4a6a;
+      padding: 4px 0;
+      border-bottom: 1px solid #eef1f7;
+      line-height: 1.4;
+    }
+    .sidebar-list li:last-child { border-bottom: none; }
+    .cert-item { margin-bottom: 10px; }
+    .cert-name { font-size: 8.5pt; font-weight: 600; color: #1a1a1a; line-height: 1.3; }
+    .cert-org { font-size: 8pt; color: #6a7a9a; margin-top: 1px; }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      padding: 28px 36px 28px 32px;
+    }
+    .section { margin-bottom: 24px; }
+    .section:last-child { margin-bottom: 0; }
+    .section-heading {
+      font-size: 10pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #0f2044;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #0f2044;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-heading span { font-size: 12pt; }
+
+    /* Summary */
+    .summary-text {
+      font-size: 9.5pt;
+      color: #3a4a6a;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    /* Experience */
+    .exp-item { margin-bottom: 18px; }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2px;
+    }
+    .exp-role {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #0f2044;
+    }
+    .exp-period {
+      font-size: 8.5pt;
+      color: #4f8ef7;
+      font-weight: 600;
+      white-space: nowrap;
+      background: #e8f0fe;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .exp-company {
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: #4f8ef7;
+      margin-bottom: 1px;
+    }
+    .exp-location {
+      font-size: 8.5pt;
+      color: #8a9abf;
+      margin-bottom: 6px;
+    }
+    .exp-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 7px;
+    }
+    .exp-tech span {
+      font-size: 7.5pt;
+      background: #f0f4ff;
+      border: 1px solid #c8d8f8;
+      color: #3060c8;
+      padding: 1px 7px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+    .exp-points {
+      list-style: none;
+      padding: 0;
+    }
+    .exp-points li {
+      font-size: 9pt;
+      color: #3a4a6a;
+      padding: 2px 0 2px 14px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .exp-points li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #4f8ef7;
+      font-size: 8pt;
+      top: 3px;
+    }
+    .exp-divider {
+      border: none;
+      border-top: 1px dashed #dde5f0;
+      margin: 14px 0;
+    }
+
+    /* Education */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-degree { font-size: 10pt; font-weight: 700; color: #0f2044; }
+    .edu-school { font-size: 9pt; color: #4f8ef7; font-weight: 500; margin-top: 1px; }
+    .edu-year {
+      font-size: 8.5pt; color: #4f8ef7; font-weight: 600;
+      background: #e8f0fe; padding: 2px 8px; border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* Print */
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0; box-shadow: none; width: 100%; }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-name">Shibin Balachandran</div>
+    <div class="header-title">Software Engineering Manager &nbsp;|&nbsp; Technology Leader &nbsp;|&nbsp; AI Enthusiast</div>
+    <div class="header-contact">
+      <span data-icon="📍">Bangalore, India</span>
+      <span data-icon="📱">+91 9480951921</span>
+      <span data-icon="✉️">shibinbalachandran.ai@gmail.com</span>
+      <span data-icon="🔗">linkedin.com/in/shibin-balachandran</span>
+      <span data-icon="🌐">shibinbalachandranai.github.io/personalProfile</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Core Skills</div>
+        <div class="skill-item">
+          <div class="skill-name">C++ / C#</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Python</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">System Architecture</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Engineering Leadership</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">AI Workflow Design</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Microservices / K8s</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Agile / Scrum</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Image Processing / CUDA</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Technologies</div>
+        <div class="tag-list">
+          <span class="tag">C++</span>
+          <span class="tag">C#</span>
+          <span class="tag">Python</span>
+          <span class="tag">Dart</span>
+          <span class="tag">Flutter</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">AWS</span>
+          <span class="tag">REST API</span>
+          <span class="tag">Git</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">Loki</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Jira</span>
+          <span class="tag">Azure AD</span>
+          <span class="tag">CUDA</span>
+          <span class="tag">DICOM</span>
+          <span class="tag">PLC</span>
+          <span class="tag">COM/DCOM</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">AI Tools</div>
+        <div class="tag-list">
+          <span class="tag">Claude Code</span>
+          <span class="tag">GitHub Copilot</span>
+          <span class="tag">MS Copilot</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Certifications</div>
+        <div class="cert-item">
+          <div class="cert-name">Manager Excellence Award</div>
+          <div class="cert-org">Applied Materials</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">PSM I — Professional Scrum Master</div>
+          <div class="cert-org">Scrum.org</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Problem Solving Process (PSP)</div>
+          <div class="cert-org">Danaher Software System</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Expert Developer — Info &amp; Software Security</div>
+          <div class="cert-org">Certification Authority</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Special Recognition ×3</div>
+          <div class="cert-org">Leica Microsystems (2020–2021)</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-heading">Education</div>
+        <div class="cert-item">
+          <div class="cert-name">Master of Computer Applications</div>
+          <div class="cert-org">Rajiv Gandhi Institute of Technology · 2007–2010</div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-name">Bachelor of Physics</div>
+          <div class="cert-org">Govt. College Madappally · 2004–2007</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <!-- SUMMARY -->
+      <div class="section">
+        <div class="section-heading"><span>👤</span> Professional Summary</div>
+        <p class="summary-text">
+          Strategic and results-driven Software Engineering Manager with 15+ years of experience designing and delivering scalable, high-performance software systems for semiconductor equipment and real-time production environments. Strong expertise in modern software architecture, design patterns, and system development using C++, C#, and Python. Proven ability to lead legacy modernization, build AI-enabled high-performing engineering teams, and drive productivity through structured engineering practices and data-driven decision-making. Recognized for strong technical judgment, customer-centric thinking, and aligning engineering execution with long-term strategic objectives.
+        </p>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="section">
+        <div class="section-heading"><span>💼</span> Professional Experience</div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Software Engineering Manager</div>
+            <div class="exp-period">Oct 2022 – Present</div>
+          </div>
+          <div class="exp-company">Applied Materials</div>
+          <div class="exp-location">Bangalore, India</div>
+          <div class="exp-tech">
+            <span>Python</span><span>Anthropic Claude Code</span><span>Microservices</span><span>Kubernetes</span><span>Loki</span><span>Grafana</span>
+          </div>
+          <ul class="exp-points">
+            <li>Lead cross-functional engineering team delivering high-performance software for semiconductor inspection and metrology systems.</li>
+            <li>Designed and implemented agentic AI workflows using Microsoft Copilot, GitHub Copilot, and Anthropic Claude Code, doubling team productivity.</li>
+            <li>Key contributor to development and stabilization of VeritySEM 10 CD Metrology system for sub-nanometre precision.</li>
+            <li>Drove observability initiatives with customer-friendly logs, traceability, and dashboards using Loki and Grafana.</li>
+            <li>Architected scalable system designs for real-time, high-volume semiconductor production environments.</li>
+            <li>Led performance optimization and root-cause resolution of critical customer-facing issues.</li>
+            <li>Built high-performing teams through goal setting, performance reviews, mentoring, and succession planning.</li>
+            <li>Championed Agile/DevOps practices; led campus recruitment and technical interviews.</li>
+          </ul>
+        </div>
+
+        <hr class="exp-divider" />
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Project Lead</div>
+            <div class="exp-period">Jan 2019 – Oct 2022</div>
+          </div>
+          <div class="exp-company">Leica Microsystems</div>
+          <div class="exp-location">Bangalore, India</div>
+          <div class="exp-tech">
+            <span>C++</span><span>C#</span><span>COM</span><span>Python</span>
+          </div>
+          <ul class="exp-points">
+            <li>Developed backend data management platforms for multiple microscope product series.</li>
+            <li>Led software design, architecture decisions, and performance tuning, enhancing overall system reliability.</li>
+            <li>Cultivated high-performance engineering team through mentorship and hands-on technical leadership.</li>
+            <li>Received Special Recognition Awards in Q3 2020, Q1 2021, and Q4 2021 for exceptional contributions.</li>
+          </ul>
+        </div>
+
+        <hr class="exp-divider" />
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Senior Software Engineer</div>
+            <div class="exp-period">Jul 2016 – Dec 2018</div>
+          </div>
+          <div class="exp-company">Micro Focus</div>
+          <div class="exp-location">Bangalore, India</div>
+          <div class="exp-tech">
+            <span>C++</span><span>C#</span><span>Active Directory</span><span>Azure AD</span><span>Office 365</span>
+          </div>
+          <ul class="exp-points">
+            <li>Developed privileged identity solutions for secure access management across Active Directory, Azure AD, and Office 365.</li>
+            <li>Led software design and full-cycle implementation; managed Agile Scrum processes for the team.</li>
+          </ul>
+        </div>
+
+        <hr class="exp-divider" />
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Senior Systems Engineer</div>
+            <div class="exp-period">Aug 2012 – Jul 2016</div>
+          </div>
+          <div class="exp-company">Siemens</div>
+          <div class="exp-location">Bangalore, India</div>
+          <div class="exp-tech">
+            <span>C++</span><span>C#</span><span>Win CE</span><span>PLC</span><span>HMI</span><span>COM/DCOM</span>
+          </div>
+          <ul class="exp-points">
+            <li>Designed and developed PLC Code Viewer for Siemens TIA Portal for real-time PLC network monitoring.</li>
+            <li>Led requirement analysis, system design, and end-to-end implementation lifecycle.</li>
+          </ul>
+        </div>
+
+        <hr class="exp-divider" />
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Programmer</div>
+            <div class="exp-period">Jul 2010 – Aug 2012</div>
+          </div>
+          <div class="exp-company">Toshiba Medical Systems Corporation (NeST)</div>
+          <div class="exp-location">Trivandrum, India</div>
+          <div class="exp-tech">
+            <span>C++</span><span>VC++</span><span>DICOM</span><span>CUDA</span><span>Medical Imaging</span>
+          </div>
+          <ul class="exp-points">
+            <li>Developed and tested features for ultrasound scanning applications using C++, VC++, and CUDA GPU programming.</li>
+            <li>Built PC Assembly Diagnostic Tool with hardware (PLC) integration and network communication.</li>
+            <li>Developed SSD RAID Evaluation Tool for assessing RAID system performance and benchmarking.</li>
+          </ul>
+        </div>
+
+      </div>
+      <!-- end experience -->
+
+    </div>
+    <!-- end main -->
+
+  </div>
+  <!-- end body -->
+
+</div>
+<!-- end page -->
+</body>
+</html>
